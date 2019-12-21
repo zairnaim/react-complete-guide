@@ -12,11 +12,11 @@ class App extends Component {
     ]
   }
 
-  buttonPressHandler = () => {
+  buttonPressHandler = (newName) => {
     console.log("hiii");
     this.setState({
       persons: [
-        { name: "Ma]ix", age: 28 },
+        { name: newName, age: 28 },
         { name: "Jabba", age: 8 },
         { name: "Lebra", age: 48 },
         { name: "Jenty", age: 22 }
@@ -31,9 +31,12 @@ class App extends Component {
           Hi I'm a react app
         </h1>
         <p>This is really working</p>
-        <button onClick={this.buttonPressHandler}>I am a button</button>
+        <button onClick={() => this.buttonPressHandler("Maximillionsss")}>I am a button</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} />
+        <Person name=
+          {this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          click = {this.buttonPressHandler.bind(this, "wwwwwwwwwwwwwwwwuuuuuuuuuuuut")} />
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age}>My Hobbies: Riding a bike</Person>
         <Person name={this.state.persons[3].name} age={this.state.persons[3].age} />
       </div>
