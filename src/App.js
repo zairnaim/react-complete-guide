@@ -9,7 +9,8 @@ class App extends Component {
       { name: "Abba", age: 8 },
       { name: "Zebra", age: 48 },
       { name: "Jen", age: 22 }
-    ]
+    ],
+    showpersons: true
   }
 
   buttonPressHandler = (newName) => {
@@ -35,6 +36,13 @@ class App extends Component {
     })
   }
 
+  togglePersonsList = () => {
+    const b = this.state.showpersons;
+    this.setState({
+      showpersons: !b
+    })
+  }
+
   render() {
     const mybuttonstyle = {
       backgroundColor: 'White',
@@ -50,19 +58,33 @@ class App extends Component {
           Hi I'm a react app
         </h1>
         <p>This is really working</p>
-        <button style={mybuttonstyle} onClick={() => this.buttonPressHandler("Maximillionsss")}>I am a button</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-        <Person name=
-          {this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.buttonPressHandler.bind(this, "wwwwwwwwwwwwwwwwuuuuuuuuuuuut")} />
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}
-            changed = {this.nameChangedHandler}
-            >My Hobbies: Riding a bike</Person>
-          
-        <Person name={this.state.persons[3].name} age={this.state.persons[3].age} />
+        <button
+          style={mybuttonstyle}
+          onClick={this.togglePersonsList}>
+          Switch name
+        </button>
+        {
+          this.state.showpersons ?
+            <div>
+              <Person
+                name={this.state.persons[0].name}
+                age={this.state.persons[0].age} />
+              <Person
+                name={this.state.persons[1].name}
+                age={this.state.persons[1].age}
+                click={this.buttonPressHandler.bind(this, "wwwwwwwwwwwwwwwwuuuuuuuuuuuut")} />
+              <Person
+                name={this.state.persons[2].name}
+                age={this.state.persons[2].age}
+                changed={this.nameChangedHandler}>
+                My Hobbies: Riding a bike
+              </Person>
+              <Person
+                name={this.state.persons[3].name}
+                age={this.state.persons[3].age} />
+            </div> : null
+        }
+
       </div>
     );
     //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
